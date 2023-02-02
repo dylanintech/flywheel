@@ -20,11 +20,12 @@ export default function Home() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   
   const getScore = async (u, g, n, e, c) => {
-    const score = (parseInt(u) + 20) * parseInt(g / 10);
+    // const score = (parseInt(u) + 20) * parseInt(g / 10);
+    const score = (parseInt(u) * parseInt(g)) + parseInt(u);
     console.log(`${u} and ${g} Your score is: ${score}`);
     setScore(score);
     setHasSubmitted(true);
-    await supabase.from('leaderboard').insert({ score: score, name: n, email: e, company: c});
+    await supabase.from('leaderboard').insert({ score: score, name: n, email: e, company: c, users: u, growthrate: g});
   }
 
   return (
