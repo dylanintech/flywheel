@@ -60,7 +60,16 @@
 
 .leaderboardlink {
   font-weight: bold;
-  
+}
+
+.founder {
+  font-size: xx-large;
+  text-align: center;
+  padding: 1.25rem;
+}
+
+.scoretext {
+  color: green;
 }
 
 .card {

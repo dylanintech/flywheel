@@ -1,6 +1,7 @@
 // import { supabase } from '/Users/dylanmolina/codeprojects/flywheels/lib/supabaseClient.js';
 import { supabase } from '../../lib/supabaseClient';
 import { useEffect, useState } from 'react';
+import styles from '@/styles/Home.module.css'
 
 const Home = () => {
     const [fetchError, setFetchError ] = useState(null);
@@ -36,7 +37,7 @@ const Home = () => {
             <div>
                 {leaderboard.map(founder => (
                     <div key={founder.id}>
-                        <p>{founder.name} | founder @ {founder.company} | {founder.score}</p>
+                        <p className={styles.founder}>{founder.name} | founder @ {founder.company} | <span className={styles.scoretext}>{founder.score}</span></p>
                     </div>
                 ))}
             </div>
