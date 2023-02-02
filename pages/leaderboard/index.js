@@ -1,4 +1,5 @@
-import { supabase } from '/Users/dylanmolina/codeprojects/flywheels/lib/supabaseClient.js';
+// import { supabase } from '/Users/dylanmolina/codeprojects/flywheels/lib/supabaseClient.js';
+import { supabase } from '../../lib/supabaseClient';
 import { useEffect, useState } from 'react';
 
 const Home = () => {
