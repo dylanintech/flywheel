@@ -17,15 +17,17 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
   const [score, setScore] = useState(0);
+  const [color, setColor] = useState('');
+  const [link, setLink] = useState('');
   const [hasSubmitted, setHasSubmitted] = useState(false);
   
-  const getScore = async (u, g, n, e, c) => {
-    // const score = (parseInt(u) + 20) * parseInt(g / 10);
-    const score = (parseInt(u) * parseInt(g)) + parseInt(u);
+  const getScore = async (u, g, n, e, c, co, l) => {
+    const gRate = ((parseInt(u) - parseInt(g)) / (parseInt(g) + 1)) * 100;
+    const score = (parseInt(u) * parseInt(gRate)) + parseInt(u);
     console.log(`${u} and ${g} Your score is: ${score}`);
     setScore(score);
     setHasSubmitted(true);
-    await supabase.from('leaderboard').insert({ score: score, name: n, email: e, company: c, users: u, growthrate: g});
+    await supabase.from('leaderboard').insert({ score: score, name: n, email: e, company: c, users: u, growthrate: g, color: co, link: l});
   }
 
   return (
@@ -44,14 +46,137 @@ export default function Home() {
           </p>
           <Link href="/leaderboard">leaderboard</Link>
         </div>
-        {hasSubmitted ? <div>
-          <p>Your score: {score}</p>
-          <p>Go to <Link className={styles.leaderboardlink} href="/leaderboard">leaderboard</Link> to see how you rank</p>
+        {hasSubmitted ? <div className={styles.formheadercontainer}>
+          <h1>Your score: {score}</h1>
+          <h2>Click <Link className={styles.leaderboardlink} href="/leaderboard">here</Link> to see if you beat your founder friends</h2>
         </div> : 
-        <div>
-        </div>
+                <div className={styles.formcontainer}>
+                <form className={styles.form}> 
+       
+                <label
+                  >
+                    name
+                  </label>
+                  <input
+                  className={styles.box}
+                  value={name}
+                  placeholder= 'Farza'
+                  type="text"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setName(e.target.value);
+                  }}
+                  >
+                  </input>
+       
+                  <label
+                  >
+                    email
+                  </label>
+                  <input
+                  className={styles.box}
+                  value={email}
+                  placeholder= 'farza@buildspace.so'
+                  type="text"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setEmail(e.target.value);
+                  }}
+                  >
+                  </input>
+       
+                  <label
+                  >
+                    company/project name
+                  </label>
+                  <input
+                  className={styles.box}
+                  value={company}
+                  placeholder= 'buildspace'
+                  type="text"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setCompany(e.target.value);
+                  }}
+                  >
+                  </input>
+       
+                <label
+                  >
+                    # of users right now (# you are tracking)
+                  </label>
+                  <input
+                  className={styles.box}
+                  value={users}
+                  placeholder= {156}
+                  type="number"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setUsers(e.target.value);
+                  }}
+                  >
+                  </input>
+                
+                  <label
+                  >
+                    # of users last week (roughly)
+                  </label>
+                  <input
+                  className={styles.box}
+                  value={growthRate}
+                  placeholder={13}
+                  type="number"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setGrowthRate(e.target.value);
+                  }}
+                  >
+                  </input>
+       
+                  <label
+                  >
+                   link to your project
+                  </label>
+                  <input
+                  className={styles.box}
+                  value={link}
+                  placeholder= {'https://buildspace.so'}
+                  type="text"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setLink(e.target.value);
+                  }}
+                  >
+                  </input>
+       
+                  <label
+                  >
+                   pick a color: 🟡 🔵 🟢 🔴
+                  </label>
+                  <input
+                  className={styles.box}
+                  value={color}
+                  placeholder= {'yellow'}
+                  type="text"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setColor(e.target.value);
+                  }}
+                  >
+                  </input>
+       
+       
+                  <button className={styles.submitbutton} type="submit" onClick={(e) => {
+                    e.preventDefault();
+                    getScore(users, growthRate, name, email, company, color, link);
+                  }}>
+                    see if you are beating your friends
+                  </button>
+       
+                </form>
+               </div>
         }
-
+{/* 
         <div className={styles.formcontainer}>
          <form className={styles.form}> 
 
@@ -130,15 +255,46 @@ export default function Home() {
            >
            </input>
 
+           <label
+           >
+            link to your project
+           </label>
+           <input
+           value={link}
+           placeholder= {'https://buildspace.so'}
+           type="text"
+           onChange={(e) => {
+             e.preventDefault();
+             setLink(e.target.value);
+           }}
+           >
+           </input>
+
+           <label
+           >
+            your color
+           </label>
+           <input
+           value={color}
+           placeholder= {'yellow'}
+           type="text"
+           onChange={(e) => {
+             e.preventDefault();
+             setColor(e.target.value);
+           }}
+           >
+           </input>
+
+
            <button type="submit" onClick={(e) => {
              e.preventDefault();
-             getScore(users, growthRate, name, email, company);
+             getScore(users, growthRate, name, email, company, color, link);
            }}>
              get your score!
            </button>
 
          </form>
-        </div>
+        </div> */}
       </main>
     </>
   )
