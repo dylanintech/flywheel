@@ -44,13 +44,15 @@ export default function Home() {
           <p>
           🎡 flywheel
           </p>
-          <Link href="/leaderboard">leaderboard</Link>
+          <Link className={styles.leaderboardlink} href="/leaderboard">leaderboard</Link>
         </div>
         {hasSubmitted ? <div className={styles.formheadercontainer}>
-          <h1>Your score: {score}</h1>
-          <h2>Click <Link className={styles.leaderboardlink} href="/leaderboard">here</Link> to see if you beat your founder friends</h2>
+          <h1>Thanks! We will get back to you as we get closer to launching. Now for the fun part.</h1>
+          <h2>Your score is {score}.</h2>
+          <h2>Click <Link className={styles.leaderboardlink} href="/leaderboard">here</Link> to see if you beat your founder friends.</h2>
         </div> : 
                 <div className={styles.formcontainer}>
+                  <h2>fill out this form to join the <span className={styles.leaderboardcrossout}>leaderboard</span> waitlist.</h2>
                 <form className={styles.form}> 
        
                 <label
@@ -58,7 +60,7 @@ export default function Home() {
                     name
                   </label>
                   <input
-                  className={styles.box}
+                  className={styles.inputbox}
                   value={name}
                   placeholder= 'Farza'
                   type="text"
@@ -74,7 +76,7 @@ export default function Home() {
                     email
                   </label>
                   <input
-                  className={styles.box}
+                  className={styles.inputbox}
                   value={email}
                   placeholder= 'farza@buildspace.so'
                   type="text"
@@ -90,7 +92,7 @@ export default function Home() {
                     company/project name
                   </label>
                   <input
-                  className={styles.box}
+                  className={styles.inputbox}
                   value={company}
                   placeholder= 'buildspace'
                   type="text"
@@ -106,7 +108,7 @@ export default function Home() {
                     # of users right now (# you are tracking)
                   </label>
                   <input
-                  className={styles.box}
+                  className={styles.inputbox}
                   value={users}
                   placeholder= {156}
                   type="number"
@@ -122,7 +124,7 @@ export default function Home() {
                     # of users last week (roughly)
                   </label>
                   <input
-                  className={styles.box}
+                  className={styles.inputbox}
                   value={growthRate}
                   placeholder={13}
                   type="number"
@@ -138,7 +140,7 @@ export default function Home() {
                    link to your project
                   </label>
                   <input
-                  className={styles.box}
+                  className={styles.inputbox}
                   value={link}
                   placeholder= {'https://buildspace.so'}
                   type="text"
@@ -154,7 +156,7 @@ export default function Home() {
                    pick a color: 🟡 🔵 🟢 🔴
                   </label>
                   <input
-                  className={styles.box}
+                  className={styles.inputbox}
                   value={color}
                   placeholder= {'yellow'}
                   type="text"
@@ -166,7 +168,7 @@ export default function Home() {
                   </input>
        
        
-                  <button className={styles.submitbutton} type="submit" onClick={(e) => {
+                  <button className={styles.variant1} type="submit" onClick={(e) => {
                     e.preventDefault();
                     getScore(users, growthRate, name, email, company, color, link);
                   }}>

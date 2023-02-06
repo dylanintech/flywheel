@@ -99,6 +99,7 @@
 .leaderboardlink {
   font-weight: bold;
   text-decoration: underline;
+  text-align: center;
 }
 
 .founder {
@@ -134,6 +135,75 @@
 .red {
   color: red;
 }
+
+.leaderboardcrossout {
+  text-decoration: line-through;
+}
+
+.variant1 {
+  box-sizing: border-box;
+  min-width: min-content; /* 290px */
+  height: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 36px 10px 36px;
+  box-shadow: 3px 4px 0px 0px #FFFFFF;
+  background-color: #7755cc;
+  overflow: visible;
+  align-content: center;
+  flex-wrap: nowrap;
+  gap: 10;
+  position: relative;
+  border-radius: 4px;
+  border: 2px solid #FFFFFF;
+  margin-top: 1rem;
+}
+
+.variant1:hover {
+  box-sizing: border-box;
+  min-width: min-content; /* 290px */
+  height: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 36px 10px 36px;
+  background-color: #7755cc;
+  box-shadow: none;
+  overflow: visible;
+  align-content: center;
+  flex-wrap: nowrap;
+  gap: 10;
+  position: relative;
+  border-radius: 4px;
+  border: 2px solid #FFFFFF;
+  margin-top: 1rem;
+}
+
+.inputbox {
+  box-sizing: border-box;
+  min-width: min-content; /* 290px */
+  height: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 36px 10px 36px;
+  box-shadow: 3px 4px 0px 0px #7755cc;
+  background-color: white;
+  color: black;
+  overflow: visible;
+  align-content: center;
+  flex-wrap: nowrap;
+  gap: 10;
+  position: relative;
+  border-radius: 4px;
+  border: 2px solid #7755cc;
+  margin-top: 0;
+}
+
 
 .card {
   padding: 1rem 1.2rem;
@@ -336,6 +406,27 @@
       rgb(var(--background-end-rgb)) 40%
     );
     z-index: 1;
+  }
+
+  .formcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 75%;
+    padding-block: 2rem;
+  }
+
+  .description {
+    display: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    font-size: 0.85rem;
+    max-width: var(--max-width);
+    width: 100%;
+    z-index: 2;
+    font-family: var(--font-mono);
+    text-align: center;
   }
 }
 
