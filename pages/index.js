@@ -47,9 +47,9 @@ export default function Home() {
           <Link className={styles.leaderboardlink} href="/leaderboard">leaderboard</Link>
         </div>
         {hasSubmitted ? <div className={styles.formheadercontainer}>
-          <h1>Thanks! We will get back to you as we get closer to launching. Now for the fun part.</h1>
+          <h1>Thanks for joining the waitlist!</h1>
           <h2>Your score is {score}.</h2>
-          <h2>Click <Link className={styles.leaderboardlink} href="/leaderboard">here</Link> to see if you beat your founder friends.</h2>
+          <h2>Click <a className={styles.leaderboardlink} href="https://flywheel-app.vercel.app/" target='none'>here</a> to try the alpha & see your dashboard.</h2>
         </div> : 
                 <div className={styles.formcontainer}>
                   <h2>fill out this form to join the <span className={styles.leaderboardcrossout}>leaderboard</span> waitlist.</h2>
